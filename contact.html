@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系方式 - 王兴华实验室</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="team.html">团队</a></li>
+                    <li><a href="publications.html">发表论文</a></li>
+                    <li><a href="research.html">研究项目</a></li>
+                    <li><a href="cv.html">个人履历</a></li>
+                    <li><a href="contact.html" class="active">联系方式</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="contact-page">
+            <h1>联系我们</h1>
+
+            <div class="contact-grid">
+                <!-- 联系信息 -->
+                <section class="contact-info-section">
+                    <div class="info-card">
+                        <h2><i class="fas fa-map-marker-alt"></i> 地址</h2>
+                        <p>辽宁省沈阳市浑南区创新路195号</p>
+                        <p>东北大学浑南校区</p>
+                        <p>邮编：100000</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h2><i class="fas fa-clock"></i> 办公时间</h2>
+                        <p>周一至周五：9:00 - 17:00</p>
+                        <p>节假日：休息</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h2><i class="fas fa-envelope"></i> 联系方式</h2>
+                        <p>邮箱：xxx@university.edu</p>
+                        <p>电话：+86 xxx-xxxx-xxxx</p>
+                        <div class="social-links">
+                            <a href="#" title="微信"><i class="fab fa-weixin"></i></a>
+                            <a href="#" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+                            <a href="#" title="Google Scholar"><i class="fab fa-google"></i></a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 联系表单 -->
+                <section class="contact-form-section">
+                    <h2>发送消息</h2>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">主题</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">消息内容</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">发送消息</button>
+                    </form>
+                </section>
+            </div>
+
+            <!-- 地图部分 -->
+            <section class="map-section">
+                <h2>实验室位置</h2>
+                <div class="map-container">
+                    <iframe 
+                        src="https://uri.amap.com/marker?position=123.424175,41.766628&name=东北大学浑南校区&src=mypage&coordinate=gaode&callnative=0"
+                        width="100%" 
+                        height="450" 
+                        frameborder="0" 
+                        style="border:0" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="directions">
+                    <h3>交通指南</h3>
+                    <div class="transport-options">
+                        <div class="transport-item">
+                            <i class="fas fa-subway"></i>
+                            <p>地铁：2号线东北大学站下车，A出口步行10分钟</p>
+                        </div>
+                        <div class="transport-item">
+                            <i class="fas fa-bus"></i>
+                            <p>公交：168路、184路、191路在东北大学南门站下车</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="contact-info">
+                    <p>电子邮件：xxx@university.edu</p>
+                    <p>所在单位：东北大学浑南校区</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html> 
