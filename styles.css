@@ -1065,3 +1065,22 @@ footer {
         grid-template-columns: 1fr;
     }
 } 
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .profile-container {
+        padding: 1rem;
+    }
+    
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .research-card {
+        padding: 1.5rem;
+    }
+} 
