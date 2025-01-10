@@ -27,20 +27,4 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     // 这里可以添加表单提交逻辑
     alert('消息已发送！我们会尽快回复。');
     this.reset();
-});
-
-// 获取访问统计数据
-function updateVisitorStats() {
-    // 这里需要调用百度统计的API
-    // 实际使用时需要替换为真实的API调用
-    fetch('YOUR_API_ENDPOINT')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('totalVisits').textContent = data.total;
-            document.getElementById('todayVisits').textContent = data.today;
-        })
-        .catch(error => console.error('Error fetching visitor stats:', error));
-}
-
-// 页面加载时更新统计数据
-document.addEventListener('DOMContentLoaded', updateVisitorStats); 
+}); 
