@@ -1124,3 +1124,45 @@ footer {
     margin: 0 1rem;
     color: rgba(255, 255, 255, 0.5);
 } 
+
+/* Logo 样式 */
+.lab-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.logo-text {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+    font-family: "STKaiti", "楷体", serif;
+}
+
+.logo-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--secondary-color);
+    margin: 0.5rem 0;
+}
+
+.logo-subtext {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.1em;
+}
+
+/* 添加悬停效果 */
+.lab-logo:hover .logo-divider {
+    width: 100px;
+    transition: width 0.3s ease;
+}
+
+.lab-logo:hover .logo-text {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    transition: text-shadow 0.3s ease;
+} 
