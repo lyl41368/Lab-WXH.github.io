@@ -68,15 +68,8 @@
 
             <section id="latest-news" class="news-section">
                 <h3>最新动态</h3>
-                <div class="news-grid">
-                    <div class="news-item">
-                        <span class="date">2024-03</span>
-                        <p>新论文发表在 Nature Communications</p>
-                    </div>
-                    <div class="news-item">
-                        <span class="date">2024-02</span>
-                        <p>实验室招收2024年秋季博士生</p>
-                    </div>
+                <div id="newsGrid" class="news-grid">
+                    <!-- 新闻数据将通过JavaScript动态加载 -->
                 </div>
             </section>
 
@@ -133,5 +126,24 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/news')
+                .then(response => response.json())
+                .then(news => {
+                    const container = document.getElementById('newsGrid');
+                    news.forEach(item => {
+                        container.innerHTML += `
+                            <div class="news-item">
+                                <span class="date">${item.publish_date}</span>
+                                <p>${item.title}</p>
+                            </div>
+                        `;
+                    });
+                })
+                .catch(error => console.error('Error loading news:', error));
+        });
+    </script>
 </body>
 </html> 

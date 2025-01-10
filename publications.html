@@ -48,31 +48,8 @@
             </div>
 
             <div class="publications-list">
-                <div class="year-section">
-                    <h2>2024</h2>
-                    <div class="pub-item journal">
-                        <div class="pub-info">
-                            <h3>论文标题示例 1</h3>
-                            <p class="authors">Wang, X., Zhang, L., Li, M.</p>
-                            <p class="journal-name">Nature Communications, 15(1), 123-456</p>
-                            <div class="pub-tags">
-                                <span class="tag">行为科学</span>
-                                <span class="tag">健康干预</span>
-                            </div>
-                        </div>
-                        <div class="pub-links">
-                            <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="#" class="pub-link"><i class="fas fa-link"></i> DOI</a>
-                            <a href="#" class="pub-link"><i class="fas fa-code"></i> 代码</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="year-section">
-                    <h2>2023</h2>
-                    <div class="pub-item conference">
-                        <!-- 更多论文条目 -->
-                    </div>
+                <div id="publicationsList">
+                    <!-- 论文数据将通过JavaScript动态加载 -->
                 </div>
             </div>
         </main>
@@ -89,4 +66,41 @@
     </div>
 </body>
 <script src="scripts.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('/api/publications')
+            .then(response => response.json())
+            .then(publications => {
+                const container = document.getElementById('publicationsList');
+                const years = [...new Set(publications.map(pub => pub.year))].sort().reverse();
+                
+                years.forEach(year => {
+                    const yearPubs = publications.filter(pub => pub.year === year);
+                    const yearSection = document.createElement('div');
+                    yearSection.className = 'year-section';
+                    yearSection.innerHTML = `
+                        <h2>${year}</h2>
+                        ${yearPubs.map(pub => `
+                            <div class="pub-item ${pub.type}">
+                                <div class="pub-info">
+                                    <h3>${pub.title}</h3>
+                                    <p class="authors">${pub.authors}</p>
+                                    <p class="journal-name">${pub.journal}</p>
+                                    <div class="pub-tags">
+                                        ${pub.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                                    </div>
+                                </div>
+                                <div class="pub-links">
+                                    ${pub.pdf_url ? `<a href="${pub.pdf_url}" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>` : ''}
+                                    ${pub.doi ? `<a href="https://doi.org/${pub.doi}" class="pub-link"><i class="fas fa-link"></i> DOI</a>` : ''}
+                                </div>
+                            </div>
+                        `).join('')}
+                    `;
+                    container.appendChild(yearSection);
+                });
+            })
+            .catch(error => console.error('Error loading publications:', error));
+    });
+</script>
 </html> 

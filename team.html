@@ -29,21 +29,8 @@
             <section class="team-section">
                 <h2>主要研究员</h2>
                 <div class="member-grid">
-                    <div class="member-card">
-                        <div class="member-photo">
-                            <img src="images/placeholders/member1.jpg" alt="占位图" class="placeholder-img">
-                        </div>
-                        <div class="member-info">
-                            <h3>王兴华</h3>
-                            <p class="member-title">教授，博士生导师</p>
-                            <p class="member-edu">博士，XX大学</p>
-                            <p class="member-research">研究方向：行为科学、健康干预</p>
-                            <div class="member-links">
-                                <a href="mailto:xxx@mail.neu.edu.cn"><i class="fas fa-envelope"></i></a>
-                                <a href="#"><i class="fab fa-google"></i></a>
-                                <a href="#"><i class="fab fa-researchgate"></i></a>
-                            </div>
-                        </div>
+                    <div id="teamMembers">
+                        <!-- 成员数据将通过JavaScript动态加载 -->
                     </div>
                 </div>
             </section>
@@ -112,5 +99,32 @@
             </div>
         </footer>
     </div>
+
+    <!-- 添加数据加载脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/team-members')
+                .then(response => response.json())
+                .then(members => {
+                    const container = document.getElementById('teamMembers');
+                    members.forEach(member => {
+                        container.innerHTML += `
+                            <div class="member-card">
+                                <div class="member-photo">
+                                    <img src="${member.photo_url}" alt="${member.name}" class="placeholder-img">
+                                </div>
+                                <div class="member-info">
+                                    <h3>${member.name}</h3>
+                                    <p class="member-title">${member.title}</p>
+                                    <p class="member-edu">${member.education}</p>
+                                    <p class="member-research">研究方向：${member.research_area}</p>
+                                </div>
+                            </div>
+                        `;
+                    });
+                })
+                .catch(error => console.error('Error loading team members:', error));
+        });
+    </script>
 </body>
 </html> 

@@ -33,23 +33,8 @@
             <!-- 教育背景 -->
             <section class="cv-section">
                 <h2><i class="fas fa-graduation-cap"></i> 教育背景</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2015-2019</div>
-                        <div class="timeline-content">
-                            <h3>博士学位</h3>
-                            <p class="institution">XX大学 心理学院</p>
-                            <p class="detail">行为科学与人体健康方向</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2012-2015</div>
-                        <div class="timeline-content">
-                            <h3>硕士学位</h3>
-                            <p class="institution">YY大学 医学院</p>
-                            <p class="detail">生物医学工程</p>
-                        </div>
-                    </div>
+                <div id="educationTimeline" class="timeline">
+                    <!-- 教育经历将通过JavaScript动态加载 -->
                 </div>
             </section>
 
@@ -147,5 +132,43 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 加载教育经历
+            fetch('/api/education')
+                .then(response => response.json())
+                .then(education => {
+                    const container = document.getElementById('educationTimeline');
+                    education.forEach(edu => {
+                        container.innerHTML += `
+                            <div class="timeline-item">
+                                <div class="timeline-date">${edu.start_date}-${edu.end_date}</div>
+                                <div class="timeline-content">
+                                    <h3>${edu.degree}</h3>
+                                    <p class="institution">${edu.institution}</p>
+                                    <p class="detail">${edu.field}</p>
+                                </div>
+                            </div>
+                        `;
+                    });
+                })
+                .catch(error => console.error('Error loading education history:', error));
+
+            // 加载工作经历
+            fetch('/api/work-experience')
+                .then(response => response.json())
+                .then(experience => {
+                    // 类似的处理工作经历数据
+                });
+
+            // 加载获奖情况
+            fetch('/api/awards')
+                .then(response => response.json())
+                .then(awards => {
+                    // 类似的处理获奖数据
+                });
+        });
+    </script>
 </body>
 </html> 

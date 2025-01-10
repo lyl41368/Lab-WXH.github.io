@@ -87,34 +87,8 @@
             <!-- 当前项目 -->
             <section class="current-projects">
                 <h2>在研项目</h2>
-                <div class="project-list">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>社会支持与免疫功能研究</h3>
-                            <span class="project-period">2023-2026</span>
-                        </div>
-                        <p class="project-description">
-                            探索社会支持网络对个体免疫系统功能的影响机制，开发基于行为干预的免疫功能改善方案。
-                        </p>
-                        <div class="project-meta">
-                            <span class="funding">国家自然科学基金</span>
-                            <span class="status">进行中</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>压力管理与健康干预</h3>
-                            <span class="project-period">2024-2027</span>
-                        </div>
-                        <p class="project-description">
-                            研究慢性压力对健康的影响，开发和评估新型压力管理干预方案的效果。
-                        </p>
-                        <div class="project-meta">
-                            <span class="funding">省级重点项目</span>
-                            <span class="status">启动阶段</span>
-                        </div>
-                    </div>
+                <div id="projectsList">
+                    <!-- 项目数据将通过JavaScript动态加载 -->
                 </div>
             </section>
 
@@ -141,5 +115,31 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/api/research-projects')
+                .then(response => response.json())
+                .then(projects => {
+                    const container = document.getElementById('projectsList');
+                    projects.forEach(project => {
+                        container.innerHTML += `
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <h3>${project.title}</h3>
+                                    <span class="project-period">${project.start_date}-${project.end_date}</span>
+                                </div>
+                                <p class="project-description">${project.description}</p>
+                                <div class="project-meta">
+                                    <span class="funding">${project.funding_source}</span>
+                                    <span class="status">${project.status}</span>
+                                </div>
+                            </div>
+                        `;
+                    });
+                })
+                .catch(error => console.error('Error loading projects:', error));
+        });
+    </script>
 </body>
 </html> 
