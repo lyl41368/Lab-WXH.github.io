@@ -1084,3 +1084,43 @@ footer {
         padding: 1.5rem;
     }
 } 
+
+/* 访问统计样式 */
+.visitor-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.visitor-stats {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.stat-divider {
+    margin: 0 1rem;
+    color: rgba(255, 255, 255, 0.5);
+} 
