@@ -56,21 +56,119 @@ body {
 
 /* 首页英雄区域 */
 .hero-section {
-    padding: 4rem 0;
-    text-align: center;
-    background: var(--light-gray);
+    position: relative;
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    overflow: hidden;
 }
 
-.hero-section h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.2) 1%, transparent 1%),
+        radial-gradient(circle at 75% 75%, rgba(255,255,255,0.2) 1%, transparent 1%);
+    background-size: 100px 100px;
+    opacity: 0.5;
+}
+
+.profile-image {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: translateY(-5px);
+}
+
+.image-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid var(--secondary-color);
+    border-radius: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.profile-image:hover .image-border {
+    opacity: 1;
+}
+
+.tagline {
+    font-size: 2rem;
     color: var(--primary-color);
+    text-align: center;
+    margin: 2rem 0;
 }
 
-.hero-section h2 {
-    font-size: 1.5rem;
+.highlight {
+    position: relative;
+    display: inline-block;
+    padding: 0 0.5rem;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: rgba(52, 152, 219, 0.2);
+    z-index: -1;
+}
+
+.separator {
+    margin: 0 1rem;
     color: var(--secondary-color);
-    margin-bottom: 2rem;
+}
+
+.link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.link-button:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.link-button.primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.link-button.primary:hover {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    text-align: justify;
 }
 
 /* 研究重点区域 */
